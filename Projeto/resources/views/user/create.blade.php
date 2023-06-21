@@ -19,6 +19,7 @@
             Telefone:<input type="text" name="telephone" id="telephone">
 
             <input type="submit" name="Salvar">
+            <input type="reset" name="Limpar">
 
 
         </form>

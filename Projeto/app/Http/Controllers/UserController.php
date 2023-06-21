@@ -50,7 +50,7 @@ class UserController extends Controller
 
         $user = User::all();
         return view('user.index')->with('user', $user)
-        ->with('message', 'Usuário cadastrado com sucesso');
+        ->with('msg', 'Usuário cadastrado com sucesso');
 
     }
 
@@ -63,6 +63,7 @@ class UserController extends Controller
     public function show($id)
     {
         //
+       
     }
 
     /**
@@ -74,6 +75,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        return view('user.edit');
     }
 
     /**
@@ -86,6 +88,20 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::find($id);
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->date_of_birth = $request->input('date_of_birth');
+        $user->cpf = $request->input('cpf');
+        $user->telephone = $request->input('telephone');
+
+        $user->save();
+
+        $user = User::all();
+        return view('user.index')->with('user', $user)
+        ->with('msg', 'Usuário atualizado com sucesso!');
+
     }
 
     /**
