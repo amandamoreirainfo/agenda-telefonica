@@ -14,6 +14,7 @@ class UserController extends Controller
     public function index()
     {
         //
+        return view('user.index');
     }
 
     /**
@@ -24,6 +25,8 @@ class UserController extends Controller
     public function create()
     {
         //
+
+        return view('user.create');
     }
 
     /**
@@ -35,6 +38,20 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $user = new User();
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->date_of_birth = $request->input('date_of_birth');
+        $user->cpf = $request->input('cpf');
+        $user->telephone = $request->input('telephone');
+
+        $user->save();
+
+        $user = User::all();
+        return view('user.index')->with('user', $user)
+        ->with('message', 'Usuário cadastrado com sucesso');
+
     }
 
     /**
