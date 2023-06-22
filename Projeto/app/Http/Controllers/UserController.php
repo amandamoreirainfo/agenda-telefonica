@@ -14,7 +14,9 @@ class UserController extends Controller
     public function index()
     {
         //
-        return view('user.index');
+        $User = User::all();
+
+        return view('user.index')->with('user', $users);
     }
 
     /**
@@ -63,6 +65,11 @@ class UserController extends Controller
     public function show($id)
     {
         //
+
+        $user = User::find($id);
+
+        return view('user.show', compact('user'));
+   
        
     }
 
@@ -75,7 +82,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        return view('user.edit');
+        $user = User::find($id);
+        return view('user.edit', compact('user'));
     }
 
     /**
