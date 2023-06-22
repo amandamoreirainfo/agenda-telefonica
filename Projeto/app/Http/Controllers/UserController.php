@@ -14,9 +14,9 @@ class UserController extends Controller
     public function index()
     {
         //
-        $User = User::all();
+        $user = User::all();
 
-        return view('user.index')->with('user', $users);
+        return view('user.index')->with('user', $user);
     }
 
     /**
@@ -68,9 +68,31 @@ class UserController extends Controller
 
         $user = User::find($id);
 
-        return view('user.show', compact('user'));
-   
+        if($user){
+
+            return view('user.show')->with('user', $user);
+
+        }else{
+
+        return view('user.show')->with('msg', 'Usuário não encontrado!');
+        
+        }
        
+    }
+
+    public function report($id){
+
+        $user = User::find($id);
+
+        if ($user){
+        
+            return view('user.report')->with('user', $user);
+
+        }else{
+
+            return view('user.report')->with('msg', 'Nenhum relatorio encontrado!');
+
+        }
     }
 
     /**
@@ -83,7 +105,16 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
-        return view('user.edit', compact('user'));
+
+        if($user){
+
+            return view('user.edit')->with('user', $user);
+
+        }else{
+
+            return view('user.edit')->with('msg', 'Usuário não encontrado!');
+
+        }
     }
 
     /**

@@ -4,7 +4,7 @@
     <head>
 
         <meta charset="UTF-8">
-        <title>Lista de Usuários</title>
+        <title>Usuários - Agenda Telefonica</title>
     
     </head>
 

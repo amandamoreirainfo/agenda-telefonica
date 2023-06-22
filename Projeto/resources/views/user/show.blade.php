@@ -10,16 +10,23 @@
 
     <body>
 
-       <h2>Visualizar dados do Usuário</h2>
+        @if (isset($msg))
 
-       <p><strong>Nome:</strong>{{ $user->name }}</p>
-       <p><strong>E-mail:</strong>{{ $user->email }}</p>
-       <p><strong>Data de Nascimento:</strong>{{ $user->date_of_birth }}</p>
-       <p><strong>CPF:</strong>{{ $user->cpf }}</p>
-       <p><strong>Telefone:</strong>{{ $user->telephone }}</p>
+            <h2>Usuário não encontrado!</h2>
+            
+        @else
 
-       <a href="{{ route('user.index') ">Voltar</a>
-
+                
+            <h2>Visualizar dados do Usuário</h2>
+            <p><strong>Nome:</strong>{{ $user->name }}</p>
+            <p><strong>E-mail:</strong>{{ $user->email }}</p>
+            <p><strong>Data de Nascimento:</strong>{{ $user->date_of_birth }}</p>
+            <p><strong>CPF:</strong>{{ $user->cpf }}</p>
+            <p><strong>Telefone:</strong>{{ $user->telephone }}</p>
+            <a href="{{ route('user.index') }} ">Voltar</a>
+            <a href="{{ route('user.destroy', $user->id) }}">Deletar</a>
+        
+        @endif
 
     </body>
 

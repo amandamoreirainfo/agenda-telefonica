@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::resource("/user", UserController::class);
+Route::get('/user/report', [UserController::class, 'report']);
