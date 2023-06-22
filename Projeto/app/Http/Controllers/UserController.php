@@ -14,9 +14,9 @@ class UserController extends Controller
     public function index()
     {
         //
-        $user = User::all();
+        $users = User::all();
 
-        return view('user.index')->with('user', $user);
+        return view('user.index')->with('user', $users);
     }
 
     /**
@@ -40,18 +40,18 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        $user = new User();
+        $users = new User();
 
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->date_of_birth = $request->input('date_of_birth');
-        $user->cpf = $request->input('cpf');
-        $user->telephone = $request->input('telephone');
+        $users->name = $request->input('name');
+        $users->email = $request->input('email');
+        $users->date_of_birth = $request->input('date_of_birth');
+        $users->cpf = $request->input('cpf');
+        $users->telephone = $request->input('telephone');
 
-        $user->save();
+        $users->save();
 
-        $user = User::all();
-        return view('user.index')->with('user', $user)
+        $users = User::all();
+        return view('user.index')->with('user', $users)
         ->with('msg', 'Usuário cadastrado com sucesso');
 
     }
@@ -66,11 +66,11 @@ class UserController extends Controller
     {
         //
 
-        $user = User::find($id);
+        $users = User::find($id);
 
-        if($user){
+        if($users){
 
-            return view('user.show')->with('user', $user);
+            return view('user.show')->with('user', $users);
 
         }else{
 
@@ -82,11 +82,11 @@ class UserController extends Controller
 
     public function report($id){
 
-        $user = User::find($id);
+        $users = User::find($id);
 
-        if ($user){
+        if ($users){
         
-            return view('user.report')->with('user', $user);
+            return view('user.report')->with('user', $users);
 
         }else{
 
@@ -104,11 +104,11 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $user = User::find($id);
+        $users = User::find($id);
 
-        if($user){
+        if($users){
 
-            return view('user.edit')->with('user', $user);
+            return view('user.edit')->with('user', $users);
 
         }else{
 
@@ -127,17 +127,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $user = User::find($id);
+        $users = User::find($id);
 
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->date_of_birth = $request->input('date_of_birth');
-        $user->cpf = $request->input('cpf');
-        $user->telephone = $request->input('telephone');
+        $users->name = $request->input('name');
+        $users->email = $request->input('email');
+        $users->date_of_birth = $request->input('date_of_birth');
+        $users->cpf = $request->input('cpf');
+        $users->telephone = $request->input('telephone');
 
-        $user->save();
+        $users->save();
 
-        $user = User::all();
+        $users = User::all();
         return view('user.index')->with('user', $user)
         ->with('msg', 'Usuário atualizado com sucesso!');
 
@@ -152,11 +152,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-        $user = User::find($id);
+        $users = User::find($id);
 
-        $user->delete();
+        $users->delete();
 
-        $user = User::all();
+        $users = User::all();
         return view('user.index')->with('user', $user)
         ->with('msg', "Usuário excluído com sucesso!");
     }

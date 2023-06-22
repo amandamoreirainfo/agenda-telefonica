@@ -10,6 +10,16 @@
 
     <body>
 
+        @extends(user.layout)
+
+        <h2>Agenda Telefonica</h2>
+
+        @if (!isset($user))
+
+            <h3>Nenhum Usuário Cadastrado!</h3>
+        
+        @else
+
         <table class="data-table">
 
             <thead>
@@ -27,23 +37,31 @@
 
             <tbody>
  
-                @foreach ($user as $u)
+                @foreach ($users as $user)
                 <tr>
                     
-                    <td>{{ $u->name }}</td>   
-                    <td><a href="{{ route('user.show', $u->id) }}">Exibir</a></td>
-                    <td><a href="{{ route('user.edit', $u->id) }}">Editar</a></td>
-                    <td><a href="{{ route('user.destroy', $u->id) }}">Deletar</a></td>
+                    <td>{{ $user->name }}</td>   
+                    <td><a href="{{ route('user.show', $user->id) }}">Exibir</a></td>
+                    <td><a href="{{ route('user.edit', $user->id) }}">Editar</a></td>
+                    <td><a href="{{ route('user.destroy', $user->id) }}">Deletar</a></td>
                 
                 </tr>
                 @endforeach
 
             </tbody>
 
-
         </table>
-     
 
+        @if(isset($msg))
+
+            <script>
+
+                alert("{{$msg}}");
+
+            </script>
+        
+    
+     
 
     </body>
 
