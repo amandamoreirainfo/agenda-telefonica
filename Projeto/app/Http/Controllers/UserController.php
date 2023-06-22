@@ -121,5 +121,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::find($id);
+
+        $user->delete();
+
+        $user = User::all();
+        return view('user.index')->with('user', $user)
+        ->with('msg', "Usuário excluído com sucesso!");
     }
 }
